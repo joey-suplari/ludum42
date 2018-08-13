@@ -70,11 +70,17 @@ function _init()
     shuffle(numarr)
 
     -- find first snake position
-
-    tmparr = {}
-    for idx,val in pairs(numarr) do
-        tmparr[val]=idx
+    local idx=1
+    local tmparr={}
+    for foo,val in pairs(numarr) do
+        if val > maxnum then
+            tmparr[idx]=val
+            idx=idx+1
+        end
     end
+
+    local r = flr(rnd(#tmparr))
+    local snakeIdx = tmparr[r]
 
 
     local snakePlaced=false
@@ -83,6 +89,11 @@ function _init()
         for y=0,15 do
             local num = numarr[count]
 
+            if count == snakeIdx then
+                spx=x*8
+                spy=y*8
+            end
+
             -- only display 1 and 2 digit numbers for now
             if num < maxnum then
                 if num < 10 then
@@ -90,11 +101,6 @@ function _init()
                 else
                     print(num,x*8,y*8+2,9)
                 end
-            elseif not(snakePlaced) then
-                spx=x*8
-                spy=y*8
-
-                snakePlaced=true
             end
 
             count=count+1
