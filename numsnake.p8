@@ -44,6 +44,11 @@ function _update()
 
 end
 
+function _draw()
+    --draw snake
+    spr(shead,spx,spy)
+end
+
 
 function _init()
     cls()
@@ -64,12 +69,21 @@ function _init()
 
     shuffle(numarr)
 
+    -- find first snake position
+
+    tmparr = {}
+    for idx,val in pairs(numarr) do
+        tmparr[val]=idx
+    end
+
+
     local snakePlaced=false
     local count = 1
     for x=0,15 do
         for y=0,15 do
             local num = numarr[count]
 
+            -- only display 1 and 2 digit numbers for now
             if num < maxnum then
                 if num < 10 then
                     print(num,x*8+2,y*8+2,9)
