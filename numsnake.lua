@@ -16,6 +16,8 @@ numarr = {}
 
 
 
+
+
 function shuffle(tbl)
   local size = #tbl
   for i = size, 1, -1 do
@@ -53,9 +55,14 @@ function _init()
     local count = 1
     for x=0,15 do
         for y=0,15 do
-            printh(count)
-            if numarr[count] < maxnum then
-                print(numarr[count],x*8,y*8+1,9)
+            local num = numarr[count]
+
+            if count < numspace and num < maxnum then
+                if num < 10 then
+                    print(num,x*8+3,y*8+1,9)
+                else
+                    print(num,x*8+1,y*8+1,9)
+                end
             end
 
             count=count+1
