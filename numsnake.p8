@@ -25,7 +25,14 @@ minnum=0
 maxnum=99
 numspace=256
 
+-- board width
+bwid=16
 
+-- button direction reference (all for player 0)
+bleft=0
+bright=1
+bup=2
+bdown=3
 
 
 
@@ -47,7 +54,7 @@ end
 
 
 function _update()
-
+    --
 
 
 end
@@ -67,19 +74,12 @@ function _draw()
         snakeSpr=sheadv
         flipy=true
     end
-    printh('start')
-    printh(spx)
-    printh(spy)
-    printh(flipx)
-    printh(flipy)
-    printh(snakeSpr)
     spr(snakeSpr,spx,spy,sdim,sdim,flipx,flipy)
 end
 
 
 function _init()
     cls()
-
 
     for x=0,16 do
         for y=0,16 do
