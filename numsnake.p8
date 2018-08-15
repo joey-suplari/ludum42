@@ -29,10 +29,10 @@ numspace=256
 bwid=16
 
 -- button direction reference (all for player 0)
-bleft=0
-bright=1
-bup=2
-bdown=3
+bl=0
+br=1
+bu=2
+bd=3
 
 
 
@@ -54,7 +54,16 @@ end
 
 
 function _update()
-    --
+    -- change direction based on arrows
+    if btn(bl) then
+        sdir='l'
+    elseif btn(br) then
+        sdir='r'
+    elseif btn(bu) then
+        sdir='u'
+    elseif btn(bd) then
+        sdir='d'
+    end
 
 
 end
