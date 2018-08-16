@@ -34,7 +34,10 @@ br=1
 bu=2
 bd=3
 
-
+-- how many frames it takes to move
+frames=15
+-- current frame count
+fct=0
 
 numarr = {}
 
@@ -54,17 +57,33 @@ end
 
 
 function _update()
-    -- change direction based on arrows
-    if btn(bl) then
-        sdir='l'
-    elseif btn(br) then
-        sdir='r'
-    elseif btn(bu) then
-        sdir='u'
-    elseif btn(bd) then
-        sdir='d'
+        if btn(bl) then
+            sdir='l'
+        elseif btn(br) then
+            sdir='r'
+        elseif btn(bu) then
+            sdir='u'
+        elseif btn(bd) then
+            sdir='d'
+        end
+    if fct == 15 then
+        -- change direction based on arrows
+
+        fct=0
+
+        if sdir=='l' then
+            spx=spx-8
+        elseif sdir=='r' then
+            spx=spx+8
+        elseif sdir=='u' then
+            spy=spy-8
+        elseif sdir=='d' then
+            spy=spy+8
+        end
     end
 
+
+    fct=fct+1
 
 end
 
