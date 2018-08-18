@@ -41,6 +41,8 @@ fct=0
 
 numarr = {}
 
+-- where the snake has been
+traveled = {}
 
 
 
@@ -67,6 +69,9 @@ function _update()
             sdir='d'
         end
     if fct == 15 then
+        local place = spy + (spx / 8)
+        traveled[place]=true
+
         -- change direction based on arrows
 
         fct=0
@@ -88,6 +93,18 @@ function _update()
 end
 
 function _draw()
+    for p,foo in pairs(traveled) do
+        local y = flr(p/8) * 8
+        local x = (p - y) * 8
+        printh('starty')
+        printh(x)
+        printh(y)
+        printh('endy')
+        spr(sbody,x,y)
+
+    end
+
+
     --draw snake
     local flipx=false
     local flipy=false
