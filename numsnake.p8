@@ -142,6 +142,8 @@ function _init()
     shuffle(numarr)
 
     -- find first snake position
+    -- TODO: Make it so the snake is pointed away from the edge if
+    -- the first position is at an edge
     local idx=1
     local tmparr={}
     for foo,val in pairs(numarr) do
