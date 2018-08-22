@@ -43,6 +43,10 @@ numarr = {}
 
 -- where the snake has been
 traveled = {}
+travx={}
+travy={}
+-- by convention lua tables are 1 indexed
+travi=0
 
 
 
@@ -69,8 +73,11 @@ function _update()
             sdir='d'
         end
     if fct == 15 then
-        local place = spy + (spx / 8)
-        traveled[place]=true
+        travi=travi+1
+
+        travx[travi]=spx
+        travy[travi]=spy
+
 
         -- change direction based on arrows
 
@@ -93,15 +100,10 @@ function _update()
 end
 
 function _draw()
-    for p,foo in pairs(traveled) do
-        local y = flr(p/8) * 8
-        local x = (p - y) * 8
-        printh('starty')
-        printh(x)
-        printh(y)
-        printh('endy')
+    for i = 1,travi do
+        local x=travx[travi]
+        local y=travy[travi]
         spr(sbody,x,y)
-
     end
 
 
