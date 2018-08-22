@@ -110,18 +110,18 @@ function _draw()
     --draw snake
     local flipx=false
     local flipy=false
-    local snakeSpr=sheadh
+    local snakespr=sheadh
     if sdir == 'r' then
         --nothing
     elseif sdir == 'l' then
         flipx=true
     elseif sdir == 'u' then
-        snakeSpr=sheadv
+        snakespr=sheadv
     elseif sdir == 'd' then
-        snakeSpr=sheadv
+        snakespr=sheadv
         flipy=true
     end
-    spr(snakeSpr,spx,spy,sdim,sdim,flipx,flipy)
+    spr(snakespr,spx,spy,sdim,sdim,flipx,flipy)
 end
 
 
@@ -152,16 +152,16 @@ function _init()
     end
 
     local r = flr(rnd(#tmparr))
-    local snakeIdx = tmparr[r]
+    local snakeidx = tmparr[r]
 
 
-    local snakePlaced=false
+    local snakeplaced=false
     local count = 1
     for x=0,15 do
         for y=0,15 do
             local num = numarr[count]
 
-            if count == snakeIdx then
+            if count == snakeidx then
                 spx=x*8
                 spy=y*8
             end
