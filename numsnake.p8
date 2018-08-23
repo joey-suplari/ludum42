@@ -181,6 +181,7 @@ function _init()
         end
     end
 
+    --if spx / 8 == 15 then
 end
 
 
