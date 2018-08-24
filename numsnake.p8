@@ -53,6 +53,10 @@ travi=0
 rightmost=15
 
 
+-- this indicates the game is over
+gameover=false
+
+
 
 
 function shuffle(tbl)
@@ -66,15 +70,24 @@ end
 
 
 function _update()
-        if btn(bl) then
-            sdir='l'
-        elseif btn(br) then
-            sdir='r'
-        elseif btn(bu) then
-            sdir='u'
-        elseif btn(bd) then
-            sdir='d'
-        end
+    if gameover then
+        return
+    end
+
+    if spx / 8  > rightmost then
+        gameover=true
+    end
+
+
+    if btn(bl) then
+        sdir='l'
+    elseif btn(br) then
+        sdir='r'
+    elseif btn(bu) then
+        sdir='u'
+    elseif btn(bd) then
+        sdir='d'
+    end
     if fct == 15 then
         travi=travi+1
 
