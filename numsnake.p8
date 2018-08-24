@@ -49,6 +49,9 @@ travy={}
 travi=0
 
 
+-- rightmost x postition by square
+rightmost=15
+
 
 
 
@@ -181,7 +184,9 @@ function _init()
         end
     end
 
-    --if spx / 8 == 15 then
+    if spx / 8 == rightmost then
+        sdir='l'
+    end
 end
 
 
