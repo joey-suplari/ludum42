@@ -91,6 +91,14 @@ function _update()
         gameover=true
     end
 
+    for i=1,travi do
+        if travx[i] == spx and travy[i] == spy then
+
+            gameover=true
+        end
+    end
+
+
 
     if btn(bl) then
         sdir='l'
