@@ -51,6 +51,9 @@ travi=0
 
 -- rightmost x postition by square
 rightmost=15
+leftmost=0
+topmost=0
+bottommost=15
 
 
 -- this indicates the game is over
@@ -71,10 +74,20 @@ end
 
 function _update()
     if gameover then
+	print('gameover')
         return
     end
 
     if spx / 8  > rightmost then
+        gameover=true
+    end
+    if spx / 8  < leftmost then
+        gameover=true
+    end
+    if spy / 8  > bottommost then
+        gameover=true
+    end
+    if spy / 8  < topmost then
         gameover=true
     end
 
