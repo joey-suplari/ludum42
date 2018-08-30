@@ -49,6 +49,11 @@ travy={}
 travi=0
 
 
+-- numbers eaten
+numeaten={}
+numeati=0
+
+
 -- rightmost x postition by square
 rightmost=15
 leftmost=0
@@ -73,6 +78,7 @@ end
 
 
 function _update()
+    -- check for gameovers
     if gameover then
 	print('gameover')
         return
@@ -134,9 +140,19 @@ function _update()
 
     fct=fct+1
 
+
+    -- Get the appropriate number, if any for the position
+    local curi = spx/8 + ((spy/8) * 16)
+    numeati=numeati+1
+    numeaten[numeati]=numarr[curi]
+    lastnum=numarr[curi]
 end
 
 function _draw()
+    if gameover then
+        return
+    end
+
     for i = 1,travi do
         local x=travx[travi]
         local y=travy[travi]
@@ -193,7 +209,7 @@ function _init()
     local r = flr(rnd(#tmparr))
     local snakeidx = tmparr[r]
 
-
+    -- this logic was copied from online
     local snakeplaced=false
     local count = 1
     for x=0,15 do
